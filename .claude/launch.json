@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cultguard-web",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8787", "--directory", "build/web", "--bind", "127.0.0.1"],
+      "port": 8787
+    }
+  ]
+}
