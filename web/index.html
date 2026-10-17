@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+    This placeholder is replaced by the `--base-href` argument of `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="CultGuard — Azərbaycan mədəni irsini Generativ AI dövründə qoruyan LegalTech və AI mühafizə platforması.">
+  <meta name="theme-color" content="#0F172A">
+  <meta name="color-scheme" content="dark">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CultGuard">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>CultGuard — Rəqəmsal İrs Mühafizəçisi</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0F172A;
+      overflow: hidden;
+    }
+    /* Branded boot screen shown until Flutter paints its first frame. */
+    #cg-boot {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: radial-gradient(circle at 50% 40%, #172238 0%, #0A1020 70%);
+      color: #94A3B8;
+      font: 500 13px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      letter-spacing: 0.12em;
+      transition: opacity 400ms ease;
+    }
+    #cg-boot svg { width: 72px; height: 72px; animation: cg-pulse 1.6s ease-in-out infinite; }
+    #cg-boot .bar { width: 140px; height: 2px; background: #334155; overflow: hidden; border-radius: 2px; }
+    #cg-boot .bar::after {
+      content: ""; display: block; width: 40%; height: 100%; background: #D4AF37;
+      animation: cg-load 1.1s ease-in-out infinite;
+    }
+    @keyframes cg-pulse { 50% { transform: scale(1.06); filter: drop-shadow(0 0 14px rgba(212,175,55,.55)); } }
+    @keyframes cg-load { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) {
+      #cg-boot svg, #cg-boot .bar::after { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cg-boot" aria-live="polite">
+    <svg viewBox="0 0 100 100" role="img" aria-label="CultGuard">
+      <path d="M50 3 L90 17 C90 55 78 80 50 97 C22 80 10 55 10 17 Z"
+            fill="#121B2E" stroke="#D4AF37" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M50 22 L56 36 L70 33 L64 47 L75 56 L61 59 L60 73 L50 63 L40 73 L39 59 L25 56 L36 47 L30 33 L44 36 Z"
+            fill="rgba(212,175,55,.16)" stroke="#F3D98B" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="50" cy="48" r="5.5" fill="#22D3EE"/>
+    </svg>
+    <div>CULTGUARD</div>
+    <div class="bar"></div>
+  </div>
+
+  <script>
+    // Fade the boot screen out once Flutter renders its first frame.
+    window.addEventListener('flutter-first-frame', function () {
+      var boot = document.getElementById('cg-boot');
+      if (!boot) return;
+      boot.style.opacity = '0';
+      setTimeout(function () { boot.remove(); }, 450);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
